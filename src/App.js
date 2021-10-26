@@ -1,13 +1,14 @@
-import logo from './logo.svg';
+
 import './App.css';
 import React, { useEffect, useState } from "react";
-import Map from './components/Map/Map'
+import MapContainer from './components/Map/Map.jsx'
 const axios = require('axios');
 
 
 function App() {
 
   const [data, setData] = useState();
+  console.log(data);
 
     useEffect (() => {
       try {
@@ -20,7 +21,7 @@ function App() {
 
   return (
     <div className="App">
-     <Map/>
+     <MapContainer/>
     </div>
   );
 }
