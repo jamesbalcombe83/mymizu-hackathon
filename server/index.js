@@ -2,6 +2,15 @@ require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
+const knex = require('knex');
+
+const db = knex({
+    client: 'pg',
+    connection: 
+        process.env.DATABASE_URL ||
+        `postgres://${process.env.USERNAME}:${process.env.PASSWORD}@localhost:5432/${process.env.DATABASE}`,
+    searchPath: "public",
+});
 
 const PORT = process.env.PORT || 5000;
 const app = express();
