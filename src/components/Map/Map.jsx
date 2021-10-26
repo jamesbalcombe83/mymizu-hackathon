@@ -7,7 +7,7 @@ const apiKey = process.env.REACT_APP_API_KEY;
 export class MapContainer extends Component {
     state = {
       showingInfoWindow: false,
-      activeMarker: {},
+      activeMarker: {}, 
       selectedPlace: {},
       locations: [{
         lat: 37.778519,
