@@ -2,6 +2,10 @@
 import './App.css';
 import React, { useEffect, useState } from "react";
 import MapContainer from './components/Map/Map.jsx'
+//import { Route, Switch } from "react-router-dom";
+import Auth0ProviderWithHistory from './components/authentication/Auth0Provider';
+import NavBar from './components/Navbar';
+
 const axios = require('axios');
 
 
@@ -20,9 +24,22 @@ function App() {
   }, []);
 
   return (
+    
+    <Auth0ProviderWithHistory>
+    
     <div className="App">
-     <MapContainer/>
+     
+    <NavBar />
+    
+      <header className="App-header">
+        <p>
+            {data}
+        </p>
+      </header>
     </div>
+    <MapContainer/>
+    </Auth0ProviderWithHistory>
+    
   );
 }
 
