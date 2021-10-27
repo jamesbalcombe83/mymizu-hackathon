@@ -1,15 +1,14 @@
+require('dotenv').config();
 const knex = require('knex');
-
-const { MMHOST, MMPORT, MMUSER, MMPASSWORD, MMDATABASE } = process.env;
 
 const mymizudb = knex({
     client: "pg",
     connection: {
-        host: MMHOST,
-        port: MMPORT,
-        user: MMUSER,
-        password: MMPASSWORD,
-        database: MMDATABASE,
+        host: process.env.MMHOST,
+        port: process.env.MMPORT,
+        user: process.env.MMUSER,
+        password: process.env.MMPASSWORD,
+        database: process.env.MMDATABASE,
         ssl: { rejectUnauthorized: false },
     }
 
