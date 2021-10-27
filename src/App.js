@@ -5,6 +5,7 @@ import MapContainer from './components/Map/Map.jsx'
 //import { Route, Switch } from "react-router-dom";
 import Auth0ProviderWithHistory from './components/authentication/Auth0Provider';
 import NavBar from './components/Navbar';
+import logo from "./img/mymizu logo long.png";
 
 const axios = require('axios');
 
@@ -23,22 +24,40 @@ function App() {
       }
   }, []);
 
+const loggedIn = true;
+
   return (
     
-    <Auth0ProviderWithHistory>
-    
     <div className="App">
-     
-    <NavBar />
-    
       <header className="App-header">
-        <p>
-            {data}
-        </p>
+      <img src={logo} alt="mymizu logo" height="120"/>
       </header>
+      {!loggedIn ? 
+      <div className="login-block">
+        <h1>Log In</h1>
+        {/* add auth login window here */}
+      </div>
+      :
+      <div className="logged-in">
+        <div className="user-profile">
+          {/* greeting */}
+          <h1>Good afternoon, username</h1>
+          <div className="userDetails">
+            {/* className="saved card" Your organisation has saved x bottles here card */}
+          {/* className"tap-listings" clickable location marking */}
+          {/* zooms map to the right to the location */}
+          {/* className="stat-drawer" reveals the stats for the location */}
+          </div>
+          <div className="mapContainer"> 
+            <MapContainer className="map"/>
+          </div>
+        </div>
+      </div>
+      }
+      {/* <Auth0ProviderWithHistory>
+        <NavBar />
+      </Auth0ProviderWithHistory> */}
     </div>
-    <MapContainer/>
-    </Auth0ProviderWithHistory>
     
   );
 }

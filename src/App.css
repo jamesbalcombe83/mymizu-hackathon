@@ -40,10 +40,17 @@ body {
 .user-profile {
   background-color: #999;
   flex: 1 0;
+  display : flex;
+  min-height: 600px;
 }
+
 
 .map-container {
   background-color: #777;
-  min-width: 500px;
-  flex: 3 0;
+}
+
+.map-container div.map{
+  max-height: 50%;
+  max-width: 50%;
+  flex: 0 1;
 }
