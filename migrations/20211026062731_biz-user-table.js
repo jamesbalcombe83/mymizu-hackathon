@@ -19,5 +19,5 @@ return knex.schema.createTable('taps', (table) => {
 };
 
 exports.down = function(knex) {
-  return knex.schema.dropTable('taps').dropTable('business_users').dropTable('tapsToUsers')
+  return knex.schema.dropTable('tapsToUsers').dropTable('business_users').dropTable('taps')
 };
