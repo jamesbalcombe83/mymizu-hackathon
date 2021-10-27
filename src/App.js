@@ -1,44 +1,63 @@
 
 import './App.css';
-import React, { useEffect, useState } from "react";
-import MapContainer from './components/Map/Map.jsx'
+import React, { useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import Map2 from './components/Map/Map2.jsx'
 //import { Route, Switch } from "react-router-dom";
 import Auth0ProviderWithHistory from './components/authentication/Auth0Provider';
-import NavBar from './components/Navbar';
+//import NavBar from './components/Navbar';
+import logo from "./img/mymizu logo long.png";
+//import AuthNav from './components/authentication/Auth-nav';
+import AuthenticationButton from './components/authentication/Authentication-button'
+import Profile from './components/authentication/Profile';
 
-const axios = require('axios');
 
+
+const apiKey = process.env.REACT_APP_API_KEY;
+const url = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&v=3.exp&libraries=geometry,drawing,places`;
+
+//const axios = require('axios');
 
 function App() {
 
-  const [data, setData] = useState();
-  console.log(data);
+  //const [data, setData] = useState();
+  //console.log(data);
 
-    useEffect (() => {
-      try {
-        axios.get('/api')
-        .then((response) => setData(response.data));
-      } catch (error) {
-        console.log(error);
-      }
-  }, []);
+  const { isAuthenticated } = useAuth0();
+
+  const [isLoggedIn, setIsLoggedIn] = useState(isAuthenticated);
+
+// const loggedIn = true;
 
   return (
     
-    <Auth0ProviderWithHistory>
-    
     <div className="App">
-     
-    <NavBar />
-    
       <header className="App-header">
-        <p>
-            {data}
-        </p>
+        <img src={logo} alt="mymizu logo" />
       </header>
+      <Auth0ProviderWithHistory>
+      {!isLoggedIn ? 
+      <div className="login-block">
+        <AuthenticationButton  setIsLoggedIn= {setIsLoggedIn}/>
+        {/* add auth login window here */}
+      </div>
+      :
+      <div className="logged-in">
+        <AuthenticationButton  setIsLoggedIn= {setIsLoggedIn}/>
+        < Profile />
+        <div className="map-container">
+        <Map2
+              isMarkerShown
+              googleMapURL={url}
+              loadingElement={<div style={{ height: `100%` }} />}
+              containerElement={<div className="map" style={{ height: `100%` }} />}
+              mapElement={<div style={{ height: `100%`, borderradius: "15px" }} />}
+            />
+        </div>
+      </div>
+      }
+      </Auth0ProviderWithHistory>
     </div>
-    <MapContainer/>
-    </Auth0ProviderWithHistory>
     
   );
 }
