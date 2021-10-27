@@ -32,20 +32,136 @@ body {
   font-size: calc(10px + 2vmin);
 }
 
+.App-header img {
+  height : 120px;
+}
+
+/* add login styles here */
+.login {
+
+}
+
+/* main display  */
 .logged-in {
   display: flex;
   flex-flow: row;
-  justify-items: center;
+  flex-wrap: wrap;
+  justify-items: space-between;
   width : 100%;
   min-height: 600px;
+  box-sizing: border-box;
 }
 
 .user-profile {
-  background-color: #999;
-  flex: 1 0;
+  border-radius: 15px;
+  margin : 5px;
+  background-color: #dfe1e7;
+  flex: 1 0 30%;
+  padding: 10px;
 }
 
-.map-container {
-  background-color: #777;
-  flex: 2 0;
+.user-details {
+  padding: 5px 5px 5px 15px;
+  border-radius: 10px;
+  font-size: 14px;
+  background-color: #dfeef5;
+  margin-bottom: 15px;
 }
+
+/* taps */
+.taps {
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 10px;
+  padding: 10px 5px 5px 5px;
+  background-color: #dfeef5;
+}
+
+.taps ul {
+  list-style-type: none;
+  display:flex;
+  flex-direction: column;
+  padding: 0px;
+}
+
+.taps li {
+  font-weight: 100;
+  border-radius: 10px;
+  background-color:#2E98D1;
+  margin: 4px;
+  text-align: center;
+  color : #fff;
+  display:block;
+  padding: 10px;
+}
+
+.taps li:hover {
+  background-color : #2781b2;
+}
+
+/* end of taps */
+
+/* map formatting */
+.map-container {
+  background-color: #dfe1e7;
+  flex: 3 0 66%;
+  margin: 5px;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+.map > div {
+  border-radius: 12px;
+}
+/* end of map */
+
+/* button formatting */
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  color: #2D383F;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #2E98D1;
+  border-color: #2E98D1;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #2781b2;
+  border-color: #257aa7;
+}
+
+.btn-lg {
+  padding: 0.5rem 1rem;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  border-radius: 0.3rem;
+}
+/* end of buttons */
+
+
+/* handle non-mobile layout */
+@media screen and (min-width: 768px) {
+  .logged-in {
+    flex-wrap: nowrap;
+  }
+}
+
+
