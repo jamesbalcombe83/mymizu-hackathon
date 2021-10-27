@@ -27,14 +27,15 @@ app.get('/api', (req, res) => {
     res.send('This is a response from the server');
 })
 
-//returns object ({business_user : business_user, tap : tapData}
+//returns object ({business_user : business_user, tap : linkedTap}
+//linkedTaps is an array of the taps linked to that business
+//need to amend this to use actual taps endpoint.
 app.get('/business_user', async (req, res) => {
     const id = req.query.id;
     try {
         const business_user = await db.select().table('business_users').where({id : id});
         const linkedTaps = await db.select('tap_id').table('tapsToUsers').where({business_user_id:id});
-        const tapData = await mymizudb.select().table('taps').where({id:linkedTaps[0].tap_id});
-        res.send({business_user : business_user, tap : tapData});
+        res.send({business_user : business_user, taps : linkedTaps});
     } catch (error) {
         console.log(error);
         res.sendStatus(500);
