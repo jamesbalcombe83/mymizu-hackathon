@@ -1,14 +1,15 @@
 const knex = require('knex');
 
+const { MMHOST, MMPORT, MMUSER, MMPASSWORD, MMDATABASE } = process.env;
 
 const mymizudb = knex({
     client: "pg",
     connection: {
-        host: 'app-acb70568-8e91-4a84-82ba-23f44b00eccb-do-user-6360571-0.b.db.ondigitalocean.com',
-        port: '25060',
-        user: 'db-ccevent',
-        password: 'bp662nmgax6pz5iz',
-        database: 'db-ccevent',
+        host: MMHOST,
+        port: MMPORT,
+        user: MMUSER,
+        password: MMPASSWORD,
+        database: MMDATABASE,
         ssl: { rejectUnauthorized: false },
     }
 
