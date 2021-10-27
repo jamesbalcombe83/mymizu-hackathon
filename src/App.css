@@ -15,7 +15,7 @@ body {
   font-weight: 400;
   line-height: 1.6;
   color: #2D383F;
-  justify-items: center;
+  justify-items: start;
   align-items: center;
   display : flex;
   flex-direction: column;
@@ -25,7 +25,8 @@ body {
 .App-header {
   min-height: 10vh;
   display: flex;
-  flex-direction: column;
+  width: 100%;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
@@ -33,24 +34,21 @@ body {
 
 .logged-in {
   display: flex;
-  flex-wrap: wrap;
   flex-flow: row;
+  justify-items: center;
+  width : 100%;
+  min-height: 600px;
 }
 
 .user-profile {
   background-color: #999;
   flex: 1 0;
-  display : flex;
-  min-height: 600px;
-}
 
+
+
+}
 
 .map-container {
   background-color: #777;
-}
-
-.map-container div.map{
-  max-height: 50%;
-  max-width: 50%;
-  flex: 0 1;
+  flex: 2 0;
 }
