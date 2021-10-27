@@ -5,6 +5,7 @@
   "proxy": "http://localhost:5000",
   "dependencies": {
     "@auth0/auth0-react": "^1.8.0",
+    "@react-google-maps/api": "^2.5.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -12,16 +13,19 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "google-map-react": "^2.1.10",
+    "google-maps-react": "^2.0.6",
     "knex": "^0.95.11",
     "pg": "^8.7.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-google-maps": "^9.4.5",
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "serve": "node server/index.js",
+    "serve": "nodemon server/index.js",
     "dev": "concurrently \"npm run serve\" \"npm start\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -47,6 +51,7 @@
     ]
   },
   "devDependencies": {
-    "concurrently": "^6.3.0"
+    "concurrently": "^6.3.0",
+    "nodemon": "^2.0.14"
   }
 }
