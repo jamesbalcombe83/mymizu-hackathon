@@ -8,7 +8,7 @@ const LoginButton = () => {
       className="btn btn-lg btn-primary"
       onClick={() => loginWithRedirect()}
     >
-      Log In
+    Log In
     </button>
   );
 };
