@@ -5,6 +5,7 @@ const cors = require('cors');
 const knex = require('knex');
 const mymizudb = require('./mymizudb');
 
+
 const db = knex({
     client: 'pg',
     connection: 
