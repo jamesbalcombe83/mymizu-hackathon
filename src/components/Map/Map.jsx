@@ -10,18 +10,25 @@ export class MapContainer extends Component {
       activeMarker: {}, 
       selectedPlace: {},
       locations: [{
+        name: "park",
+        description: "can barbecue",
         lat: 37.778519,
         lng:-122.405640
     },
     {
+        name: "shop",
+        description: "cheap vegetables available",
         lat: 37.759703,
         lng:-122.405640
     },
-    {
+    {   name: "apartments",
+        description: "nice and cozy",
         lat: 37.779703,
         lng:-122.405640
     },
-    {
+    {   
+        name: "restaurant",
+        description: "good food",
         lat: 37.789703,
         lng:-122.405640
     },
@@ -34,13 +41,7 @@ export class MapContainer extends Component {
         activeMarker: marker,
         showingInfoWindow: true
       });
-
-    markerClicked() {
-        console.log('clicked');
-    }
-
       
-
     onMapClicked = (props) => {
       if (this.state.showingInfoWindow) {
         this.setState({
@@ -53,19 +54,29 @@ export class MapContainer extends Component {
     render() {
 
     const locations = this.state.locations.map(location =>
-            <Marker  key={location.lat} className="location"
+            <Marker onClick={this.onMarkerClick} key={location.lat} className="location" 
               position={{lat: location.lat, lng: location.lng}}
+              name={location.name}
+              description={location.description}
             />
     );
-
-
-     return (
+    
+    return (
     <Map google={this.props.google} 
     style={{width: '100%', height: '100%', position: 'relative'}}
     className={'map'}
     zoom={14}>
 
     {locations}
+    
+    <InfoWindow
+          marker={this.state.activeMarker}
+          visible={this.state.showingInfoWindow}>
+            <div>
+              <h1>{this.state.selectedPlace.name}</h1>
+              <p>{this.state.selectedPlace.description}</p>
+            </div>
+        </InfoWindow>
     </Map>
   );
     }
