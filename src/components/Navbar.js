@@ -1,6 +1,7 @@
 import React from 'react';
 
 import AuthNav from './authentication/Auth-nav';
+import Profile from './authentication/Profile';
 
 const NavBar = () => {
   return (
@@ -9,6 +10,7 @@ const NavBar = () => {
         <div className="container">
           <div className="navbar-brand logo" />
           <AuthNav />
+          <Profile />
         </div>
       </nav>
     </div>
