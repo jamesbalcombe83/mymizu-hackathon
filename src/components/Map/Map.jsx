@@ -35,6 +35,12 @@ export class MapContainer extends Component {
         showingInfoWindow: true
       });
 
+    markerClicked() {
+        console.log('clicked');
+    }
+
+      
+
     onMapClicked = (props) => {
       if (this.state.showingInfoWindow) {
         this.setState({
@@ -47,14 +53,14 @@ export class MapContainer extends Component {
     render() {
 
     const locations = this.state.locations.map(location =>
-            <Marker key={location.lat} className="location"
+            <Marker  key={location.lat} className="location"
               position={{lat: location.lat, lng: location.lng}}
             />
     );
 
 
      return (
-    <Map google={this.props.google}
+    <Map google={this.props.google} 
     style={{width: '100%', height: '100%', position: 'relative'}}
     className={'map'}
     zoom={14}>
