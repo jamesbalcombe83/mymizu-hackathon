@@ -78,8 +78,9 @@ export class MapContainer extends Component {
             <div>
               <h1>{this.state.selectedPlace.name}</h1>
               <p>{this.state.selectedPlace.address}</p>
+              <img src={this.state.selectedPlace.photo_url} alt="" width="140" height="140"/>
               <p>{this.state.selectedPlace.comment}</p>
-              <img src={this.state.selectedPlace.photo_url} alt="" width="160" height="160"/>
+              
             </div>
         </InfoWindow>
     </Map>
