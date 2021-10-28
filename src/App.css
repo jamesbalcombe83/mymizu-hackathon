@@ -26,7 +26,7 @@ body {
   min-height: 10vh;
   display: flex;
   width: 100%;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
@@ -37,8 +37,11 @@ body {
 }
 
 /* add login styles here */
-.login {
-
+.login-block {
+  display : flex;
+  flex: 1 0;
+  justify-content: center;
+  align-items: center;
 }
 
 /* main display  */
@@ -48,7 +51,7 @@ body {
   flex-wrap: wrap;
   justify-items: space-between;
   width : 100%;
-  min-height: 600px;
+  /* min-height: 600px; */
   box-sizing: border-box;
 }
 
@@ -56,8 +59,9 @@ body {
   border-radius: 15px;
   margin : 5px;
   background-color: #dfe1e7;
-  flex: 1 0 30%;
+  flex: 1 1 30%;
   padding: 10px;
+  min-height: none;
 }
 
 .user-details {
@@ -66,6 +70,23 @@ body {
   font-size: 14px;
   background-color: #dfeef5;
   margin-bottom: 15px;
+}
+
+/* stats */
+
+.user-stats {
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 10px;
+  padding: 10px 5px 5px 5px;
+  background-color: #dfeef5;
+  margin-bottom: 15px;
+}
+
+.user-stats p {
+  padding: 0;
+  margin: 0;
 }
 
 /* taps */
@@ -105,7 +126,9 @@ body {
 /* map formatting */
 .map-container {
   background-color: #dfe1e7;
+  min-height: 66%;
   flex: 3 0 66%;
+  min-height:400px;
   margin: 5px;
   border-radius: 15px;
   padding: 10px;

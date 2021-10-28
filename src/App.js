@@ -1,33 +1,36 @@
-
 import './App.css';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import Map2 from './components/Map/Map2.jsx'
-//import { Route, Switch } from "react-router-dom";
+import Map from './components/Map/Map.jsx'
 import Auth0ProviderWithHistory from './components/authentication/Auth0Provider';
-//import NavBar from './components/Navbar';
 import logo from "./img/mymizu logo long.png";
-//import AuthNav from './components/authentication/Auth-nav';
 import AuthenticationButton from './components/authentication/Authentication-button'
 import Profile from './components/authentication/Profile';
-
-
-
-const apiKey = process.env.REACT_APP_API_KEY;
-const url = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&v=3.exp&libraries=geometry,drawing,places`;
-
-//const axios = require('axios');
+const axios = require('axios');
 
 function App() {
 
-  //const [data, setData] = useState();
-  //console.log(data);
+  // for authorization
+  const { user, isAuthenticated, isLoading } = useAuth0();
+
+
+  // states for user details
+  const [userDetails, setUserDetails] = useState();
+
+
+  const [allTaps, setAllTaps] = useState([]);
+  const [clickedTap, setClickedTap] = useState(null);
+  //const [clickedTapSt, setClickedTap] = useState();
+  
+
+  // App render
 
   const { isAuthenticated } = useAuth0();
-
   const [isLoggedIn, setIsLoggedIn] = useState(isAuthenticated);
 
-// const loggedIn = true;
+  
+  console.log(allTaps)
+  
 
   return (
     
@@ -36,19 +39,17 @@ function App() {
         <img src={logo} alt="mymizu logo" />
       </header>
       <Auth0ProviderWithHistory>
+          <div className="login-block">
+            <AuthenticationButton  setIsLoggedIn= {setIsLoggedIn}/>
+          </div>
       {!isLoggedIn ? 
-      <div className="login-block">
-        <AuthenticationButton  setIsLoggedIn= {setIsLoggedIn}/>
-        {/* add auth login window here */}
-      </div>
+      <div className="login-block" />
       :
       <div className="logged-in">
-        <AuthenticationButton  setIsLoggedIn= {setIsLoggedIn}/>
-        < Profile />
-        <div className="map-container">
-        <Map2></Map2>
-        </div>
+        < Profile setUserDetails={setUserDetails} userDetails={userDetails} allTaps={allTaps} setAllTaps={setAllTaps} clickedTap={clickedTap} setClickedTap={setClickedTap}/>
+       
       </div>
+
       }
       </Auth0ProviderWithHistory>
     </div>

@@ -4,7 +4,7 @@ const path = require('path');
 const cors = require('cors');
 const knex = require('knex');
 const mymizudb = require('./mymizudb');
-const { link } = require('fs');
+const { createProxyMiddleware } = require('http-proxy-middleware');
 
 
 const db = knex({
@@ -17,6 +17,14 @@ const db = knex({
 
 const PORT = process.env.PORT || 5000;
 const app = express();
+
+const options = {
+    target: 'https://my-mizu-dev2-gen8n.ondigitalocean.app/dev-api', // target host
+    changeOrigin: true, // needed for virtual hosted sites
+  };
+  
+const exampleProxy = createProxyMiddleware(options);
+app.use('/taps', exampleProxy);
 
 app.use(cors());
 app.use(express.json());

@@ -1,90 +1,93 @@
-import React from "react";
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
-import { Component } from 'react'
+
+import React, { useState, useEffect } from "react";
+import ReactDOM from "react-dom";
+import { withScriptjs, withGoogleMap, GoogleMap, Marker , InfoWindow} from "react-google-maps"
+const axios = require('axios');
+    
+
 
 const apiKey = process.env.REACT_APP_API_KEY;
+const url = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&v=3.exp&libraries=geometry,drawing,places`;
 
-export class MapContainer extends Component {
-    state = {
-      showingInfoWindow: false,
-      activeMarker: {}, 
-      selectedPlace: {},
-      locations: [{
-        name: "park",
-        description: "can barbecue",
-        lat: 37.778519,
-        lng:-122.405640
-    },
-    {
-        name: "shop",
-        description: "cheap vegetables available",
-        lat: 37.759703,
-        lng:-122.405640
-    },
-    {   name: "apartments",
-        description: "nice and cozy",
-        lat: 37.779703,
-        lng:-122.405640
-    },
-    {   
-        name: "restaurant",
-        description: "good food",
-        lat: 37.789703,
-        lng:-122.405640
-    },
-   ]
-    };
 
-    onMarkerClick = (props, marker, e) =>
-      this.setState({
-        selectedPlace: props,
-        activeMarker: marker,
-        showingInfoWindow: true
-      });
+function Map(props) {
+
+    function MapComponent() {
+
+        const [selectedTap, setSelectedTap] = useState(null);
+
+        const [markers, setMarkers ] = useState([]);
+
+        const allTapDeatils = [];
+
+        useEffect( () => { 
+            const getalltaps = async () => {
+            
+                for (let i=0; i< props.allTaps.length; i++){
+                    let tmpurl = "/taps/"+props.allTaps[i]["tap_id"];
+                    let res =  await axios.get(tmpurl, { headers: {Authorization: `Bearer ${process.env.REACT_APP_MYMIZU_API_KEY}` } } )
+            
+                    setMarkers(markers => [...markers, ...res.data])
+                }
+                
+            }
+            getalltaps();
+        }, [])
       
-    onMapClicked = (props) => {
-      if (this.state.showingInfoWindow) {
-        this.setState({
-          showingInfoWindow: false,
-          activeMarker: null
-        })
+        
+        return (
+          <>
+          <GoogleMap 
+          defaultZoom={12}
+          defaultCenter={{ lat: 35.6622084, lng: 139.7487909 }}
+      >
+          {markers.map(tap => (
+              <Marker 
+                  key={tap.id} 
+                  position={{
+                      lat: tap.latitude, 
+                      lng: tap.longitude
+                  }}
+                  onClick ={() => { 
+                      setSelectedTap(tap);
+                  }}
+              />
+          ))}
+      
+          {selectedTap && (
+              <InfoWindow
+                  position={{
+                      lat: selectedTap.latitude, 
+                      lng: selectedTap.longitude
+                  }}
+                  onCloseClick={() => {
+                      setSelectedTap(null);
+                  }}
+              >
+                  <div>
+                      <h4>{selectedTap.name}</h4>
+                      <p>{selectedTap.address}</p>
+                      <img src={selectedTap.photo_url} alt=""  width="140" height="140"/>
+                      <p>{selectedTap.comment}</p>
+                  </div>
+              </InfoWindow>
+          )}
+      </GoogleMap>
+      </>
+      )
+      
       }
-    };
-    
-    render() {
 
-    const locations = this.state.locations.map(location =>
-            <Marker onClick={this.onMarkerClick} key={location.lat} className="location" 
-              position={{lat: location.lat, lng: location.lng}}
-              name={location.name}
-              description={location.description}
-            />
-    );
-    
-    return (
-    <Map google={this.props.google} 
-    style={{width: '100%', height: '100%', position: 'relative'}}
-    className={'map'}
-    zoom={14}>
+  const WrappedMap = withScriptjs(withGoogleMap(MapComponent));
 
-    {locations}
-    
-    <InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}>
-            <div>
-              <h1>{this.state.selectedPlace.name}</h1>
-              <p>{this.state.selectedPlace.description}</p>
-            </div>
-        </InfoWindow>
-    </Map>
-  );
-    }
-  }
+  return (
+  <WrappedMap
+  googleMapURL={url}
+  loadingElement={<div style={{ minheight: `200px`, height:`100%`}} />}
+  containerElement={<div style={{ minheight: `200px`, height:"100%"}} />}
+  mapElement={<div style={{ minheight: `200px`, height:"100%"}}/>}
+    />
+  )
+}
 
-export default GoogleApiWrapper({
-  apiKey
-})(MapContainer)
-
-//API
-
+export default Map;
