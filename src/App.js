@@ -2,7 +2,7 @@
 import './App.css';
 import React, { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import Map2 from './components/Map/Map2.jsx'
+import Map from './components/Map/Map.jsx'
 //import { Route, Switch } from "react-router-dom";
 import Auth0ProviderWithHistory from './components/authentication/Auth0Provider';
 //import NavBar from './components/Navbar';
@@ -41,19 +41,19 @@ function App() {
         <img src={logo} alt="mymizu logo" />
       </header>
       <Auth0ProviderWithHistory>
+          <div className="login-block">
+            <AuthenticationButton  setIsLoggedIn= {setIsLoggedIn}/>
+          </div>
       {!isLoggedIn ? 
-      <div className="login-block">
-        <AuthenticationButton  setIsLoggedIn= {setIsLoggedIn}/>
-        {/* add auth login window here */}
-      </div>
+      <div className="login-block" />
       :
       <div className="logged-in">
-        <AuthenticationButton  setIsLoggedIn= {setIsLoggedIn}/>
         < Profile />
         <div className="map-container">
-        <Map2 />
+        <Map />
         </div>
       </div>
+
       }
       </Auth0ProviderWithHistory>
     </div>
