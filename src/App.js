@@ -46,7 +46,13 @@ function App() {
         <AuthenticationButton  setIsLoggedIn= {setIsLoggedIn}/>
         < Profile />
         <div className="map-container">
-        <Map2></Map2>
+        <Map2
+              isMarkerShown
+              googleMapURL={url}
+              loadingElement={<div style={{ height: `100%` }} />}
+              containerElement={<div className="map" style={{ height: `100%` }} />}
+              mapElement={<div style={{ height: `100%`, borderradius: "15px" }} />}
+            />
         </div>
       </div>
       }
