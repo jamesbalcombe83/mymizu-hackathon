@@ -6,8 +6,8 @@ const UserDetails = (props) => {
   const { tap_id } = props.userDetails.taps[0];
 
     return (
-      <div> 
-        <div className="user-profile">
+      <div className="user-profile"> 
+
           {/* greeting */}
           <h1>Good afternoon, {username}</h1>
           <div className="user-details">
@@ -24,9 +24,7 @@ const UserDetails = (props) => {
             <ul>
               <li>{tap_id}</li>
             </ul>
-          </div>
-        </div>
-        
+          </div>       
       </div>
       
     );

@@ -160,9 +160,9 @@ function Map2() {
   return (
   <WrappedMap
   googleMapURL={url}
-  loadingElement={<div style={{ height: `100%` }} />}
-  containerElement={<div style={{ height: `100%` }} />}
-  mapElement={<div style={{ height: `100%` }} />}
+  loadingElement={<div style={{ minheight: `200px`, height:`100%`}} />}
+  containerElement={<div style={{ minheight: `200px`, height:"100%"}} />}
+  mapElement={<div style={{ minheight: `200px`, height:"100%"}}/>}
             />
   )
 }

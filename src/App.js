@@ -41,19 +41,19 @@ function App() {
         <img src={logo} alt="mymizu logo" />
       </header>
       <Auth0ProviderWithHistory>
+          <div className="login-block">
+            <AuthenticationButton  setIsLoggedIn= {setIsLoggedIn}/>
+          </div>
       {!isLoggedIn ? 
-      <div className="login-block">
-        <AuthenticationButton  setIsLoggedIn= {setIsLoggedIn}/>
-        {/* add auth login window here */}
-      </div>
+      <div className="login-block" />
       :
       <div className="logged-in">
-        <AuthenticationButton  setIsLoggedIn= {setIsLoggedIn}/>
         < Profile />
         <div className="map-container">
-        <Map2></Map2>
+        <Map2 />
         </div>
       </div>
+
       }
       </Auth0ProviderWithHistory>
     </div>
