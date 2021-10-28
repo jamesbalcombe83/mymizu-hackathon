@@ -1,5 +1,6 @@
 import React from 'react';
 import Tap from './Tap';
+import UserStats from './UserStats.jsx';
 
 const UserDetails = (props) => {
 
@@ -18,6 +19,7 @@ const UserDetails = (props) => {
             <b> Business email:  </b> {email} 
 
           </div>
+          <UserStats />
           <Tap taps={props.userDetails.taps}/>
         </div>      
     );
