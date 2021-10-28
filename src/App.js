@@ -2,7 +2,7 @@
 import './App.css';
 import React, { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import Map2 from './components/Map/Map2.jsx'
+import Map from './components/Map/Map.jsx'
 //import { Route, Switch } from "react-router-dom";
 import Auth0ProviderWithHistory from './components/authentication/Auth0Provider';
 //import NavBar from './components/Navbar';
@@ -50,7 +50,7 @@ function App() {
       <div className="logged-in">
         < Profile />
         <div className="map-container">
-        <Map2 />
+        <Map />
         </div>
       </div>
 
