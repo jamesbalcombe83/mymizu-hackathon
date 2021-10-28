@@ -1,5 +1,6 @@
 import React from 'react';
 import Tap from './Tap';
+import Map from './Map/Map';
 
 const UserDetails = (props) => {
 
@@ -11,17 +12,19 @@ const UserDetails = (props) => {
    props.setAllTaps(props.userDetails.taps)
 
     return (
+      <>
       <div className="user-profile"> 
-
           <h1>Hello, {username}</h1>
           <div className="user-details">
-            <b>Business id: </b> {id} <br></br>
             <b>Business name: </b> {business_name} <br></br>
             <b> Business email:  </b> {email} 
-
           </div>
-          <Tap allTaps={props.allTaps} setAllTaps={props.setAllTaps} clickedTap={props.clickedTap} setClickedTap={props.setClickedTap}/>
-        </div>      
+        <Tap allTaps={props.allTaps} setAllTaps={props.setAllTaps} clickedTap={props.clickedTap} setClickedTap={props.setClickedTap}/>
+      </div>
+      <div className="map-container">
+         <Map allTaps={props.allTaps} clickedTap={props.clickedTap}/>
+      </div>
+      </>      
     );
   };
   

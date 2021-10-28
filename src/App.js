@@ -53,14 +53,7 @@ function App() {
       :
       <div className="logged-in">
         < Profile setUserDetails={setUserDetails} userDetails={userDetails} allTaps={allTaps} setAllTaps={setAllTaps} clickedTap={clickedTap} setClickedTap={setClickedTap}/>
-
-        {allTaps.length  && (
-        <div className="map-container">
-
-        <Map allTaps={allTaps} setAllTaps={setAllTaps} clickedTap={clickedTap} setClickedTap={setClickedTap} />
-
-        </div>) }
-
+       
       </div>
 
       }
