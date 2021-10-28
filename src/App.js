@@ -18,7 +18,7 @@ function App() {
   //to retreive a different tap, replace the number with the relevant tap.
   useEffect( () => {
     try {
-      axios.get('/taps/178334', { headers: {Authorization: `Bearer ${process.env.MYMIZU_API_KEY}` } } )
+      axios.get('/taps/178334', { headers: {Authorization: `Bearer ${process.env.REACT_APP_MYMIZU_API_KEY}` } } )
       .then((response) =>  {
         console.log(response.data )
     })
