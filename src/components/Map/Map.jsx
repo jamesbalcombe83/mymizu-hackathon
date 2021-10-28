@@ -80,6 +80,9 @@ function MapComponent() {
         >
             <div>
                 <h4>{selectedTap.name}</h4>
+                <p>{selectedTap.address}</p>
+                <img src={selectedTap.photo_url} alt=""  width="140" height="140"/>
+                <p>{selectedTap.comment}</p>
             </div>
         </InfoWindow>
     )}
