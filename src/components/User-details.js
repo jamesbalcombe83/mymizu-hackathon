@@ -1,9 +1,12 @@
 import React from 'react';
+import Tap from './Tap';
 
 const UserDetails = (props) => {
 
   const { id, business_name, username, email } =  props.userDetails.business_user[0];
-  const { tap_id } = props.userDetails.taps[0];
+  
+
+  console.log(props.userDetails.taps)
 
     return (
       <div> 
@@ -19,12 +22,7 @@ const UserDetails = (props) => {
             {/* zooms map to the right to the location */}
             {/* className="stat-drawer" reveals the stats for the location */}
           </div>
-          <div className="taps">
-            Your taps
-            <ul>
-              <li>{tap_id}</li>
-            </ul>
-          </div>
+          <Tap taps={props.userDetails.taps}/>
         </div>
         
       </div>

@@ -51,7 +51,7 @@ function App() {
         <AuthenticationButton  setIsLoggedIn= {setIsLoggedIn}/>
         < Profile />
         <div className="map-container">
-        <Map2></Map2>
+        <Map2 />
         </div>
       </div>
       }
