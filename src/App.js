@@ -3,11 +3,8 @@ import './App.css';
 import React, { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import Map from './components/Map/Map.jsx'
-//import { Route, Switch } from "react-router-dom";
 import Auth0ProviderWithHistory from './components/authentication/Auth0Provider';
-//import NavBar from './components/Navbar';
 import logo from "./img/mymizu logo long.png";
-//import AuthNav from './components/authentication/Auth-nav';
 import AuthenticationButton from './components/authentication/Authentication-button'
 import Profile from './components/authentication/Profile';
 const axios = require('axios');
@@ -29,7 +26,6 @@ function App() {
   }, [])
 
   const { isAuthenticated } = useAuth0();
-
   const [isLoggedIn, setIsLoggedIn] = useState(isAuthenticated);
 
 // const loggedIn = true;

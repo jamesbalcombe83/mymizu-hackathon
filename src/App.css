@@ -72,6 +72,23 @@ body {
   margin-bottom: 15px;
 }
 
+/* stats */
+
+.user-stats {
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 10px;
+  padding: 10px 5px 5px 5px;
+  background-color: #dfeef5;
+  margin-bottom: 15px;
+}
+
+.user-stats p {
+  padding: 0;
+  margin: 0;
+}
+
 /* taps */
 .taps {
   text-align: center;
