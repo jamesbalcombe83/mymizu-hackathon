@@ -23,10 +23,7 @@ function App() {
   const [allTaps, setAllTaps] = useState([]);
   const [clickedTap, setClickedTap] = useState(null);
   //const [clickedTapSt, setClickedTap] = useState();
-
-  //const [tapDetails, setTapDetails] = useState([]);
   
-
 
   // App render
   const [isLoggedIn, setIsLoggedIn] = useState(isAuthenticated);
@@ -34,9 +31,6 @@ function App() {
   
   console.log(allTaps)
   
-
-
-// const loggedIn = true;
 
   return (
     
