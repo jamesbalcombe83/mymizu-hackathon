@@ -1,6 +1,6 @@
 
 import './App.css';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import Map2 from './components/Map/Map2.jsx'
 //import { Route, Switch } from "react-router-dom";
@@ -10,18 +10,23 @@ import logo from "./img/mymizu logo long.png";
 //import AuthNav from './components/authentication/Auth-nav';
 import AuthenticationButton from './components/authentication/Authentication-button'
 import Profile from './components/authentication/Profile';
-
-
-
-const apiKey = process.env.REACT_APP_API_KEY;
-const url = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&v=3.exp&libraries=geometry,drawing,places`;
-
-//const axios = require('axios');
+const axios = require('axios');
 
 function App() {
 
-  //const [data, setData] = useState();
-  //console.log(data);
+  // this request will retrieve details of a tap
+  //to retreive a different tap, replace the number with the relevant tap.
+  useEffect( () => {
+    try {
+      axios.get('/taps/178334', { headers: {Authorization: `Bearer ${process.env.MYMIZU_API_KEY}` } } )
+      .then((response) =>  {
+        console.log(response.data )
+    })
+
+  } catch (error) {
+    console.log(error);
+  }
+  }, [])
 
   const { isAuthenticated } = useAuth0();
 
