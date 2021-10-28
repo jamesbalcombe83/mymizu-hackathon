@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { withScriptjs, withGoogleMap, GoogleMap, Marker , InfoWindow} from "react-google-maps"
+const axios = require('axios');
 
 
 const apiKey = process.env.REACT_APP_API_KEY;
 const url = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&v=3.exp&libraries=geometry,drawing,places`;
+
 
 const taps =  [
   {
@@ -47,10 +49,39 @@ const taps =  [
 },
 ]
 
-function MapComponent() {
+function MapComponent(props) {
   const [selectedTap, setSelectedTap] = useState(null);
+
+    const getalltaps = async () => {
+        const allTapDeatils = [];
+        for (let i=0; i< props.allTaps.length; i++){
+            //let url = "/taps/"+ String(testarray[i]["tap_id"])
+            let url = "/taps/"+props.allTaps[i];
+            let res =  await axios.get(url, { headers: {Authorization: `Bearer ${process.env.REACT_APP_MYMIZU_API_KEY}` } } )
+            allTapDeatils.push(res.data);
+        }
+        console.log(allTapDeatils) 
+
+    }
+
+    //console.log(props.allTaps)
+    //const testarray = ['178334', '178336', '178339'];
+    //setTapDetails(allTapDeatils)
+    //console.log(tapDetails)
+
+   //axios.get('/taps/178334', { headers: {Authorization: `Bearer ${process.env.REACT_APP_MYMIZU_API_KEY}` } } )
+   // .then((response) =>  {
+   //  console.log(response.data )
+  //})
+
+    if (props.allTaps.length) {
+        getalltaps();
+    }
+
   
   return (
+    <>
+    {/*props.clickedTap ? (console.log(props.clickedTap)) : (console.log("hi"))*/}
     <GoogleMap 
     defaultZoom={12}
     defaultCenter={{ lat: taps[0].latitude, lng: taps[0].longitude }}
@@ -87,7 +118,9 @@ function MapComponent() {
         </InfoWindow>
     )}
 </GoogleMap>
+</>
 )
+
 }
 
 const WrappedMap = withScriptjs(withGoogleMap(MapComponent));

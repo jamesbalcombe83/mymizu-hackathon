@@ -6,7 +6,9 @@ const UserDetails = (props) => {
   const { id, business_name, username, email } =  props.userDetails.business_user[0];
   
 
-  console.log(props.userDetails.taps)
+  //console.log(props.userDetails.taps)
+
+   props.setAllTaps(props.userDetails.taps)
 
     return (
       <div className="user-profile"> 
@@ -18,7 +20,7 @@ const UserDetails = (props) => {
             <b> Business email:  </b> {email} 
 
           </div>
-          <Tap taps={props.userDetails.taps}/>
+          <Tap allTaps={props.allTaps} setAllTaps={props.setAllTaps} clickedTap={props.clickedTap} setClickedTap={props.setClickedTap}/>
         </div>      
     );
   };
