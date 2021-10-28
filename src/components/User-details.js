@@ -1,13 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Tap from './Tap';
 
 const UserDetails = (props) => {
 
   const { id, business_name, username, email } =  props.userDetails.business_user[0];
-  // { tap_id } = props.userDetails.taps;
-
-  //const [tap, setTap] = useState([]);
-
   
 
   console.log(props.userDetails.taps)
