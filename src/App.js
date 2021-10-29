@@ -1,38 +1,32 @@
-
 import './App.css';
 import React, { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import Map from './components/Map/Map.jsx'
-//import { Route, Switch } from "react-router-dom";
 import Auth0ProviderWithHistory from './components/authentication/Auth0Provider';
-//import NavBar from './components/Navbar';
 import logo from "./img/mymizu logo long.png";
-//import AuthNav from './components/authentication/Auth-nav';
 import AuthenticationButton from './components/authentication/Authentication-button'
 import Profile from './components/authentication/Profile';
 const axios = require('axios');
 
 function App() {
 
-  // this request will retrieve details of a tap
-  //to retreive a different tap, replace the number with the relevant tap.
-  useEffect( () => {
-    try {
-      axios.get('/taps/178334', { headers: {Authorization: `Bearer ${process.env.REACT_APP_MYMIZU_API_KEY}` } } )
-      .then((response) =>  {
-        console.log(response.data )
-    })
+  // states for user details
+  const [userDetails, setUserDetails] = useState();
 
-  } catch (error) {
-    console.log(error);
-  }
-  }, [])
+
+  const [allTaps, setAllTaps] = useState([]);
+  const [clickedTap, setClickedTap] = useState(null);
+  //const [clickedTapSt, setClickedTap] = useState();
+  
+
+  // App render
 
   const { isAuthenticated } = useAuth0();
-
   const [isLoggedIn, setIsLoggedIn] = useState(isAuthenticated);
 
-// const loggedIn = true;
+  
+  console.log(allTaps)
+  
 
   return (
     
@@ -48,10 +42,8 @@ function App() {
       <div className="login-block" />
       :
       <div className="logged-in">
-        < Profile />
-        <div className="map-container">
-        <Map />
-        </div>
+        < Profile setUserDetails={setUserDetails} userDetails={userDetails} allTaps={allTaps} setAllTaps={setAllTaps} clickedTap={clickedTap} setClickedTap={setClickedTap}/>
+       
       </div>
 
       }

@@ -3,9 +3,9 @@ import { useAuth0 } from "@auth0/auth0-react";
 import UserDetails from "../User-details";
 const axios = require('axios');
 
-const Profile = () => {
+const Profile = (props) => {
 
-  const [userDetails, setUserDetails] = useState();
+  //const [userDetails, setUserDetails] = useState();
   const [isRendered, setIsRendered] = useState(false);
 
   const { user, isAuthenticated, isLoading } = useAuth0();
@@ -20,7 +20,7 @@ const Profile = () => {
       const get_business_user_url = "/business_user?id=" + String(user.sub);
       axios.get(get_business_user_url)
       .then((response) =>  {
-        setUserDetails(response.data )
+        props.setUserDetails(response.data )
       })
       .then( () => {
         setIsRendered(true)
@@ -33,7 +33,7 @@ const Profile = () => {
   return (
     isAuthenticated && isRendered && (
       <>
-      < UserDetails userDetails={userDetails}/>
+      < UserDetails userDetails={props.userDetails} allTaps={props.allTaps} setAllTaps={props.setAllTaps} clickedTap={props.clickedTap} setClickedTap={props.setClickedTap}/>
       </>
     )
   );
