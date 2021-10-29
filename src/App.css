@@ -137,6 +137,21 @@ body {
 .map > div {
   border-radius: 12px;
 }
+
+.loc-window p {
+  margin: 0;
+  padding: 2px;
+}
+
+.emph {
+  font-weight: bold;
+}
+
+.location-photo {
+  border-radius: 5%;
+  width:100px;
+  height:100px;
+}
 /* end of map */
 
 /* button formatting */

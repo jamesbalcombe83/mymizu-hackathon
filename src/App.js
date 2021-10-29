@@ -13,24 +13,13 @@ function App() {
   // for authorization
   const { user, isAuthenticated, isLoading } = useAuth0();
 
-
   // states for user details
   const [userDetails, setUserDetails] = useState();
 
-
   const [allTaps, setAllTaps] = useState([]);
   const [clickedTap, setClickedTap] = useState(null);
-  //const [clickedTapSt, setClickedTap] = useState();
-  
-
   // App render
-
-  const { isAuthenticated } = useAuth0();
   const [isLoggedIn, setIsLoggedIn] = useState(isAuthenticated);
-
-  
-  console.log(allTaps)
-  
 
   return (
     
