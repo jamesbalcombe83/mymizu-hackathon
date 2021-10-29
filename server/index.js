@@ -11,7 +11,7 @@ const db = knex({
     client: 'pg',
     connection: 
         process.env.DATABASE_URL ||
-        `postgres://${process.env.USERNAME}:${process.env.PASSWORD}@localhost:5432/${process.env.DATABASE}`,
+        `postgres://${process.env.PGUSERNAME}:${process.env.PGPASSWORD}@localhost:5432/${process.env.DATABASE}`,
     searchPath: "public",
 });
 
