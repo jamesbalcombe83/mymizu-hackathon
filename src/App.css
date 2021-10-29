@@ -1,38 +1,205 @@
+@import url(https://fonts.googleapis.com/css?family=Nunito+Sans);
+@import url(https://fonts.googleapis.com/css?family=Poppins);
+@charset "UTF-8";
+
+body {
+  background-color: #f8fafc;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  font-family: "Nunito Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #2D383F;
+  justify-items: start;
+  align-items: center;
+  display : flex;
+  flex-direction: column;
+  background-color: #f8fafc;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  min-height: 10vh;
   display: flex;
+  width: 100%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.App-header img {
+  height : 120px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+/* add login styles here */
+.login-block {
+  display : flex;
+  flex: 1 0;
+  justify-content: center;
+  align-items: center;
+}
+
+/* main display  */
+.logged-in {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-items: space-between;
+  width : 100%;
+  /* min-height: 600px; */
+  box-sizing: border-box;
+}
+
+.user-profile {
+  border-radius: 15px;
+  margin : 5px;
+  background-color: #dfe1e7;
+  flex: 1 1 30%;
+  padding: 10px;
+  min-height: none;
+}
+
+.user-details {
+  padding: 5px 5px 5px 15px;
+  border-radius: 10px;
+  font-size: 14px;
+  background-color: #dfeef5;
+  margin-bottom: 15px;
+}
+
+/* stats */
+
+.user-stats {
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 10px;
+  padding: 10px 5px 5px 5px;
+  background-color: #dfeef5;
+  margin-bottom: 15px;
+}
+
+.user-stats p {
+  padding: 0;
+  margin: 0;
+}
+
+/* taps */
+.taps {
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+  border-radius: 10px;
+  padding: 10px 5px 5px 5px;
+  background-color: #dfeef5;
+}
+
+.taps ul {
+  list-style-type: none;
+  display:flex;
+  flex-direction: column;
+  padding: 0px;
+}
+
+.taps li {
+  font-weight: 100;
+  border-radius: 10px;
+  background-color:#2E98D1;
+  margin: 4px;
+  text-align: center;
+  color : #fff;
+  display:block;
+  padding: 10px;
+}
+
+.taps li:hover {
+  background-color : #2781b2;
+}
+
+/* end of taps */
+
+/* map formatting */
+.map-container {
+  background-color: #dfe1e7;
+  min-height: 66%;
+  flex: 3 0 66%;
+  min-height:400px;
+  margin: 5px;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+.map > div {
+  border-radius: 12px;
+}
+
+.loc-window p {
+  margin: 0;
+  padding: 2px;
+}
+
+.emph {
+  font-weight: bold;
+}
+
+.location-photo {
+  border-radius: 5%;
+  width:100px;
+  height:100px;
+}
+/* end of map */
+
+/* button formatting */
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  color: #2D383F;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #2E98D1;
+  border-color: #2E98D1;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #2781b2;
+  border-color: #257aa7;
+}
+
+.btn-lg {
+  padding: 0.5rem 1rem;
+  font-size: 1.125rem;
+  line-height: 1.5;
+  border-radius: 0.3rem;
+}
+/* end of buttons */
+
+
+/* handle non-mobile layout */
+@media screen and (min-width: 768px) {
+  .logged-in {
+    flex-wrap: nowrap;
   }
 }
+
+
