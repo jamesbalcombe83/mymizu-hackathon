@@ -15,7 +15,7 @@ This hackathon collaborating with mymizu team is one of the challenges at Code C
 
 ## Features
 
-![Project Image](pic.png)
+![Project Image](app-pic.png)
 
 The initial screen is the login page where the user will have to fill in their email and password.
 
