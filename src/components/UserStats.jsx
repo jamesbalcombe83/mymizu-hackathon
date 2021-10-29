@@ -7,7 +7,7 @@ const UserStats = (props) => {
 //money saved
     return (
         <div className="user-stats">
-            <p>You have helped saved: 23</p>
+            <p>You have helped save 23 bottles</p>
             <p>Your taps have served 22.69 liters</p>
             <p>Your customers have saved ¥3,450</p>
         </div>
