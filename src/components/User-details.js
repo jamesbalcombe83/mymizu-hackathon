@@ -3,7 +3,6 @@ import Tap from './Tap';
 import Map from './Map/Map';
 import UserStats from './UserStats.jsx';
 
-
 const UserDetails = (props) => {
 
   const { id, business_name, username, email } =  props.userDetails.business_user[0];
@@ -32,4 +31,4 @@ const UserDetails = (props) => {
     );
   };
   
-  export default UserDetails;
+export default UserDetails;
