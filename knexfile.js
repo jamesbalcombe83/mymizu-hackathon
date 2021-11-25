@@ -1,7 +1,7 @@
 // Update with your config settings.
 require("dotenv").config();
 
-const { CLIENT, DATABASE, PGUSERNAME, PGPASSWORD, HOST, PORT } = process.env;
+const { CLIENT, DATABASE, PGUSERNAME, PASSWORD, HOST, PORT } = process.env;
 
 module.exports = {
 
@@ -10,7 +10,7 @@ module.exports = {
     connection: {
       database: DATABASE,
       user: PGUSERNAME,
-      password: PGPASSWORD,
+      password: PASSWORD,
       host: HOST,
       port: PORT,
     },
